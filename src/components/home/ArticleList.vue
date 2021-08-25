@@ -5,17 +5,24 @@
 <script lang="ts">
 
 import {Options, Vue} from 'vue-class-component';
+import {getCurrentInstance} from "vue";
 
 @Options({
   props: {
     content: Number,
     index: Number
   },
-  emits: ['articleItemIsReady']
+  emits: ['articleItemIsReady'],
 })
 export default class ArticleList extends Vue {
   public index!: number;
   public ready: boolean = false;
+  public emitter = getCurrentInstance()?.appContext.config.globalProperties.emitter
+
+  created() {
+
+  }
+
 
   isReady() {
     setTimeout(() => {
@@ -24,6 +31,7 @@ export default class ArticleList extends Vue {
   }
 
   mounted() {
+    this.emitter.emit('loadList')
     this.isReady();
   }
 }

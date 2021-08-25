@@ -5,7 +5,7 @@
       <navbar/>
     </transition>
     <div class="wrapper">
-      <router-view />
+      <router-view/>
     </div>
   </div>
 </template>
@@ -15,7 +15,9 @@ import {Options, Vue} from 'vue-class-component';
 
 import Navbar from '@/components/home/Navbar.vue';
 import PageLine from '@/components/home/PageLine.vue';
+import {getCurrentInstance} from "vue";
 
+import util from "@/assets/utils/util";
 
 import utils from '@/assets/utils/util';
 
@@ -27,11 +29,17 @@ import utils from '@/assets/utils/util';
   emits: ['showScrollTopIcon']
 })
 export default class ContextWrapper extends Vue {
+  public emitter = getCurrentInstance()?.appContext.config.globalProperties.emitter
   // 网页高度 一些特殊情况下 获取到正确的结果后传给页面进度组件(比如有网络请求)
   public pageHeight: number = 0;
 
   created() {
+    this.emitter.on('loadList', util.debounce(this.updateLoadList, this, 500))
+  }
 
+  updateLoadList() {
+    console.log('页面更新啦~~')
+    this.pageHeight = document.body.scrollHeight
   }
 
   // 页面滚动监听函数
@@ -48,17 +56,14 @@ export default class ContextWrapper extends Vue {
 
   mounted() {
     this.$nextTick(() => {
-      // 测试页面进度条是否正常
-      this.pageHeight = 2000;
-      setTimeout(() => {
-        this.pageHeight = document.body.scrollHeight;
-      }, 2000);
+      this.pageHeight = document.body.scrollHeight;
     });
     window.addEventListener('scroll', this.scrollFunc);
   }
 
   unmounted() {
     window.removeEventListener('scroll', this.scrollFunc);
+    this.emitter.off('loadList')
   }
 }
 </script>

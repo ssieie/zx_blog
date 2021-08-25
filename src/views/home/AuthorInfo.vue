@@ -1,6 +1,6 @@
 <template>
-  <div class="author-info" :class="{'author-active':isShow}">
-    <div class="info" :style="{'width':isShow?infoWidth:'0px'}">
+  <div class="author-info" :class="{'author-active':!isShow?markShow:isShow}">
+    <div class="info" :style="{'width':infoShow?infoWidth:'0px'}">
       <h1>info</h1>
     </div>
   </div>
@@ -12,12 +12,26 @@ import {Options, Vue} from 'vue-class-component';
 @Options({
   props: {
     isShow: Boolean
+  },
+  watch: {
+    isShow() {
+    }
   }
 })
 export default class AuthorInfo extends Vue {
   public infoWidth: string = '370px';
+  public infoShow: boolean = false
+  public markShow: boolean = false
 
   created() {
+    this.$watch('isShow', (value: boolean) => {
+      setTimeout(() => {
+        this.infoShow = value
+        setTimeout(() => {
+          this.markShow = value
+        }, 600)
+      }, 300)
+    })
   }
 }
 </script>
@@ -30,14 +44,14 @@ export default class AuthorInfo extends Vue {
   bottom: 0;
   left: 0;
   z-index: -9998;
-  transition: all .45s ease-in-out;
+  transition: all .7s ease;
 
   .info {
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
-    transition: width .45s ease-out;
+    transition: width .7s ease;
     background: #505050;
   }
 }

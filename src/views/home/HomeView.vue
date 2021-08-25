@@ -8,6 +8,7 @@
 import {Vue, Options} from 'vue-class-component';
 import ArticleList from '@/components/home/ArticleList.vue';
 
+
 @Options({
   components: {
     ArticleList
@@ -24,8 +25,9 @@ export default class HomeView extends Vue {
       for (let i = 0; i < 30; i++) {
         this.testList.push(i);
       }
-    },6000);
+    }, 3000);
   }
+
 }
 </script>
 
