@@ -1,9 +1,11 @@
 <template>
   <div>
     <page-line :height="pageHeight"/>
-    <navbar/>
+    <transition appear name="fade">
+      <navbar/>
+    </transition>
     <div class="wrapper">
-      <article-list v-for="(item,index) in testList" :key="index" :content="item" :index="index"/>
+      <router-view />
     </div>
   </div>
 </template>
@@ -13,7 +15,7 @@ import {Options, Vue} from 'vue-class-component';
 
 import Navbar from '@/components/home/Navbar.vue';
 import PageLine from '@/components/home/PageLine.vue';
-import ArticleList from '@/components/home/ArticleList.vue';
+
 
 import utils from '@/assets/utils/util';
 
@@ -21,19 +23,15 @@ import utils from '@/assets/utils/util';
   components: {
     Navbar,
     PageLine,
-    ArticleList
   },
   emits: ['showScrollTopIcon']
 })
 export default class ContextWrapper extends Vue {
-  public testList: Array<Number> = [];
   // 网页高度 一些特殊情况下 获取到正确的结果后传给页面进度组件(比如有网络请求)
   public pageHeight: number = 0;
 
   created() {
-    for (let i = 0; i < 100; i++) {
-      this.testList.push(i);
-    }
+
   }
 
   // 页面滚动监听函数
@@ -70,5 +68,15 @@ export default class ContextWrapper extends Vue {
   color: #333333;
   width: 100%;
   overflow: hidden;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

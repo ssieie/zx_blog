@@ -78,7 +78,7 @@ export default class PageLine extends Vue {
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 767px) {
   .line {
     display: none;
   }

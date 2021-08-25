@@ -20,7 +20,7 @@ export default class ArticleList extends Vue {
   isReady() {
     setTimeout(() => {
       this.ready = true;
-    }, this.index * 200);
+    }, (this.index + 1) * 200);
   }
 
   mounted() {

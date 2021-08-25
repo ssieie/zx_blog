@@ -46,7 +46,7 @@ export default class AuthorInfo extends Vue {
   z-index: 9998;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 767px) {
   .author-info {
     display: none;
   }

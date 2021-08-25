@@ -143,7 +143,7 @@ export default class NegativePageControlBtn extends Vue {
   }
 
   .is-hover {
-    transform: translate(0, -15%);
+    transform: translate(0, -15%) scale(1.1);
   }
 }
 
@@ -153,7 +153,7 @@ export default class NegativePageControlBtn extends Vue {
   bottom: 60px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 767px) {
   .negative-page-control, .page-top-btn {
     display: none;
   }
