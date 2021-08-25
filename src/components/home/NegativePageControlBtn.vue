@@ -63,7 +63,7 @@ export default class NegativePageControlBtn extends Vue {
   width: 28px;
   height: 28px;
   border-radius: 2px;
-  background: #232121;
+  background: #505050;
 
   span {
     display: block;
@@ -95,8 +95,8 @@ export default class NegativePageControlBtn extends Vue {
 
   .line-one-close {
     width: 18px;
-    margin-left: 6px !important;
-    margin-top: 12px !important;
+    margin-left: 5px !important;
+    margin-top: 13px !important;
     transform: rotate(-45deg);
   }
 
@@ -117,7 +117,7 @@ export default class NegativePageControlBtn extends Vue {
 
   .line-three-close {
     width: 18px;
-    margin-top: -1px !important;
+    margin-top: -2px !important;
     margin-left: 6px !important;
     transform: rotate(45deg);
   }
@@ -131,7 +131,7 @@ export default class NegativePageControlBtn extends Vue {
   width: 28px;
   height: 28px;
   border-radius: 2px;
-  background: #232121;
+  background: #505050;
   opacity: 0;
   z-index: -999;
   transition: all .3s ease-out;

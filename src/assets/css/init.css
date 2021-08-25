@@ -38,9 +38,12 @@ body ::selection {
 */
 
 ::-webkit-scrollbar {
+    display:none;
+    width:0;
+    height: 0;
     /*滚动条整体样式*/
-    width: 10px; /*高宽分别对应横竖滚动条的尺寸*/
-    height: 1px;
+    /*width: 10px; */
+    /*height: 1px;*/
 }
 
 ::-webkit-scrollbar-thumb {

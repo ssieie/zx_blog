@@ -39,7 +39,7 @@ export default class Home extends Vue {
 
 <style lang="scss" scoped>
 .context {
-  background: #f5f5f5;
+  background: #ffffff;
   overflow: hidden;
 }
 </style>

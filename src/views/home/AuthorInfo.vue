@@ -29,24 +29,21 @@ export default class AuthorInfo extends Vue {
   right: 0;
   bottom: 0;
   left: 0;
-  background: #000000;
   z-index: -9998;
-  transition: all .45s ease-out;
-  opacity: 0;
+  transition: all .45s ease-in-out;
 
   .info {
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
-    transition: all .45s ease-out;
-    background: #ffffff;
+    transition: width .45s ease-out;
+    background: #505050;
   }
 }
 
 .author-active {
   z-index: 9998;
-  opacity: .6;
 }
 
 @media screen and (max-width: 800px) {

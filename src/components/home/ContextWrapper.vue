@@ -1,25 +1,34 @@
 <template>
   <div>
+    <page-line :height="pageHeight"/>
     <navbar/>
     <div class="wrapper">
-      <h1 v-for="(item,index) in testList" :key="index">{{ index }} - {{ item }}</h1>
+      <article-list v-for="(item,index) in testList" :key="index" :content="item" :index="index"/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import {Options, Vue} from 'vue-class-component';
+
 import Navbar from '@/components/home/Navbar.vue';
+import PageLine from '@/components/home/PageLine.vue';
+import ArticleList from '@/components/home/ArticleList.vue';
+
 import utils from '@/assets/utils/util';
 
 @Options({
   components: {
-    Navbar
+    Navbar,
+    PageLine,
+    ArticleList
   },
   emits: ['showScrollTopIcon']
 })
 export default class ContextWrapper extends Vue {
   public testList: Array<Number> = [];
+  // 网页高度 一些特殊情况下 获取到正确的结果后传给页面进度组件(比如有网络请求)
+  public pageHeight: number = 0;
 
   created() {
     for (let i = 0; i < 100; i++) {
@@ -40,6 +49,13 @@ export default class ContextWrapper extends Vue {
   public scrollFunc: any = utils.throttle(this.handlerScroll, this, 300);
 
   mounted() {
+    this.$nextTick(() => {
+      // 测试页面进度条是否正常
+      this.pageHeight = 2000;
+      setTimeout(() => {
+        this.pageHeight = document.body.scrollHeight;
+      }, 2000);
+    });
     window.addEventListener('scroll', this.scrollFunc);
   }
 
