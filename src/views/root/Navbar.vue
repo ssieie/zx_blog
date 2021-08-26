@@ -4,25 +4,33 @@
       <div class="nav-wrap fl-b">
         <div class="logo fl-c">logo</div>
         <div class="menu-list fl">
-          <div class="menu-item fl-c" @click="toUrl('index')">
+          <div class="menu-item fl-c" @click="toPage('index')">
             <i class="fa fa-home"></i>
-            <span>首页<span class="line"></span></span>
+            <span>首页</span>
           </div>
-          <div class="menu-item fl-c">
+          <div class="menu-item fl-c" @click="toPage('category')">
             <i class="fa fa-book"></i>
-            <span>文章归档<span class="line"></span></span>
+            <span>归档</span>
           </div>
           <div class="menu-item fl-c">
-            <i class="fa fa-thumbs-up"></i>
-            <span>JavaScript<span class="line"></span></span>
+            <i class="fa fa-tags"></i>
+            <span>标签</span>
+          </div>
+          <div class="menu-item fl-c">
+            <i class="fa fa-archive"></i>
+            <span>时间线</span>
+          </div>
+          <div class="menu-item fl-c">
+            <i class="fa fa-hashtag"></i>
+            <span>JavaScript</span>
           </div>
           <div class="menu-item fl-c">
             <i class="fa fa-coffee"></i>
-            <span>杂项<span class="line"></span></span>
+            <span>杂项</span>
           </div>
-          <div class="menu-item fl-c" @click="toUrl('about')">
+          <div class="menu-item fl-c" @click="toPage('about')">
             <i class="fa fa-user"></i>
-            <span>关于此站<span class="line"></span></span>
+            <span>关于此站</span>
           </div>
         </div>
       </div>
@@ -37,25 +45,33 @@
         </div>
       </div>
       <div class="menu-list">
-        <div class="menu-item" @click="toUrl('index')">
+        <div class="menu-item" @click="toPage('index')">
           <i class="fa fa-home"></i>
-          <span>首页<span class="line"></span></span>
+          <span>首页</span>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" @click="toPage('category')">
           <i class="fa fa-book"></i>
-          <span>文章归档<span class="line"></span></span>
+          <span>文章归档</span>
         </div>
         <div class="menu-item">
-          <i class="fa fa-thumbs-up"></i>
-          <span>JavaScript<span class="line"></span></span>
+          <i class="fa fa-tags"></i>
+          <span>标签</span>
+        </div>
+        <div class="menu-item">
+          <i class="fa fa-archive"></i>
+          <span>时间线</span>
+        </div>
+        <div class="menu-item">
+          <i class="fa fa-hashtag"></i>
+          <span>JavaScript</span>
         </div>
         <div class="menu-item">
           <i class="fa fa-coffee"></i>
-          <span>杂项<span class="line"></span></span>
+          <span>杂项</span>
         </div>
-        <div class="menu-item" @click="toUrl('about')">
+        <div class="menu-item" @click="toPage('about')">
           <i class="fa fa-user"></i>
-          <span>关于此站<span class="line"></span></span>
+          <span>关于此站</span>
         </div>
       </div>
     </div>
@@ -70,11 +86,11 @@ export default class Navbar extends Vue {
   public mobileBarHeight: string = '50px';
 
   clickMenu() {
-    this.mobileBarHeight = this.mobileBarHeight === '50px' ? '214px' : '50px';
+    this.mobileBarHeight = this.mobileBarHeight === '50px' ? '270px' : '50px';
   }
 
-  toUrl(url: string) {
-    this.mobileBarHeight = '50px'
+  toPage(url: string) {
+    this.mobileBarHeight = '50px';
     this.$router.push(url);
   }
 }
@@ -88,7 +104,7 @@ export default class Navbar extends Vue {
   margin-top: 4px;
 
   .nav-wrap {
-    width: 75%;
+    width: 70%;
 
     .logo {
       width: 70px;
@@ -98,33 +114,27 @@ export default class Navbar extends Vue {
 
     .menu-list {
       font-size: 14px;
-      color: #333333;
+      color: #655e5e;
+      -moz-user-select: none; /*火狐*/
+      -webkit-user-select: none; /*webkit浏览器*/
+      -ms-user-select: none; /*IE10*/
+      user-select: none;
 
       .menu-item {
-        position: relative;
         cursor: pointer;
-        margin-left: 30px;
+        margin-left: 20px;
+        padding: 4px 6px;
+        border-radius: 4px;
+        transition: background-color .35s;
 
         i {
           margin-right: 3px;
         }
+      }
 
-        .line {
-          position: absolute;
-          bottom: -3px;
-          left: 0;
-          width: 0;
-          height: 2px;
-          background: #333333;
-          border-radius: 10px;
-          opacity: 0;
-          transition: all .45s;
-        }
-
-        :hover .line {
-          opacity: 1;
-          width: 100%;
-        }
+      .menu-item:hover {
+        color: #333333;
+        background: rgba(191, 192, 192, 0.57);
       }
     }
   }
@@ -198,24 +208,36 @@ export default class Navbar extends Vue {
   .menu-list {
     font-size: 14px;
     color: #333333;
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    user-select: none;
 
     .menu-item {
-      position: relative;
       margin-left: 30px;
       margin-top: 13px;
 
       i {
         margin-right: 5px;
       }
+    }
 
-      :hover {
-        color: #4343b9;
-      }
+    :hover {
+      color: #4343b9;
     }
   }
 
   .nb-mobile-wrap-ac {
     border-bottom: 1px solid #ccc2c2;
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  .nav-bar-pc {
+
+    .nav-wrap {
+      width: 85%;
+    }
   }
 }
 

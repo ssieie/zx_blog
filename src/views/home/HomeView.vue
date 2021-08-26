@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container fl">
     <article-list v-for="(item,index) in testList" :key="index" :content="item" :index="index"/>
   </div>
 </template>
@@ -18,19 +18,24 @@ export default class HomeView extends Vue {
   public testList: Array<Number> = [];
 
   created() {
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 10; i++) {
       this.testList.push(i);
     }
-    setTimeout(() => {
-      for (let i = 0; i < 30; i++) {
-        this.testList.push(i);
-      }
-    }, 3000);
   }
 
 }
 </script>
 
 <style scoped lang="scss">
+.container {
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 0 0 0;
+}
 
+@media screen and (max-width: 787px) {
+  .container {
+    padding: 0;
+  }
+}
 </style>

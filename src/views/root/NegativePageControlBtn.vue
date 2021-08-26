@@ -69,7 +69,7 @@ export default class NegativePageControlBtn extends Vue {
     display: block;
     width: 18px;
     height: 2px;
-    background: #f5f5f5;
+    background: #b4cbff;
     transition: all .5s;
   }
 
@@ -154,8 +154,15 @@ export default class NegativePageControlBtn extends Vue {
 }
 
 @media screen and (max-width: 767px) {
-  .negative-page-control, .page-top-btn {
+  .negative-page-control {
     display: none;
+  }
+  .page-top-btn{
+    right: 30px;
+    bottom: 100px;
+    .is-hover{
+      transform: translate(0, 0) scale(1);
+    }
   }
 }
 </style>

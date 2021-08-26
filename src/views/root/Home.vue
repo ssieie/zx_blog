@@ -8,15 +8,15 @@
 
 <script lang="ts">
 import {Options, Vue} from 'vue-class-component';
-import ContextWrapper from '@/components/home/ContextWrapper.vue';
-import AuthorInfo from '@/views/home/AuthorInfo.vue';
-import NegativePageControlBtn from '@/components/home/NegativePageControlBtn.vue';
+import ContextWrapper from '@/views/root/ContextWrapper.vue';
+import AuthorInfo from '@/views/authorInfo/AuthorInfo.vue';
+import NegativePageControlBtn from '@/views/root/NegativePageControlBtn.vue';
 
 @Options({
   components: {
     ContextWrapper,
     AuthorInfo,
-    NegativePageControlBtn
+    NegativePageControlBtn,
   },
 })
 

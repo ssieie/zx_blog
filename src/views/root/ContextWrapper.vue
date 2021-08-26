@@ -7,17 +7,18 @@
     <div class="wrapper">
       <router-view/>
     </div>
+    <page-footer/>
   </div>
 </template>
 
 <script lang="ts">
 import {Options, Vue} from 'vue-class-component';
 
-import Navbar from '@/components/home/Navbar.vue';
-import PageLine from '@/components/home/PageLine.vue';
-import {getCurrentInstance} from "vue";
+import Navbar from '@/views/root/Navbar.vue';
+import PageLine from '@/views/root/PageLine.vue';
+import PageFooter from '@/components/home/PageFooter.vue';
 
-import util from "@/assets/utils/util";
+import {getCurrentInstance} from 'vue';
 
 import utils from '@/assets/utils/util';
 
@@ -25,21 +26,23 @@ import utils from '@/assets/utils/util';
   components: {
     Navbar,
     PageLine,
+    PageFooter
   },
   emits: ['showScrollTopIcon']
 })
 export default class ContextWrapper extends Vue {
-  public emitter = getCurrentInstance()?.appContext.config.globalProperties.emitter
+  public emitter = getCurrentInstance()?.appContext.config.globalProperties.emitter;
   // 网页高度 一些特殊情况下 获取到正确的结果后传给页面进度组件(比如有网络请求)
   public pageHeight: number = 0;
 
   created() {
-    this.emitter.on('loadList', util.debounce(this.updateLoadList, this, 500))
+    this.emitter.on('loadList', utils.debounce(this.updateLoadList, this, 500));
   }
 
   updateLoadList() {
-    console.log('页面更新啦~~')
-    this.pageHeight = document.body.scrollHeight
+    console.log('页面更新啦~~');
+    console.log(document.body.scrollHeight);
+    this.pageHeight = document.body.scrollHeight;
   }
 
   // 页面滚动监听函数
@@ -63,7 +66,7 @@ export default class ContextWrapper extends Vue {
 
   unmounted() {
     window.removeEventListener('scroll', this.scrollFunc);
-    this.emitter.off('loadList')
+    this.emitter.off('loadList');
   }
 }
 </script>
