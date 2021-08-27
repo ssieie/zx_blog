@@ -206,8 +206,8 @@ export default class RunTimeClock extends Vue {
 
   .time {
     //background-color: #88d3ce;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
 
   }
 

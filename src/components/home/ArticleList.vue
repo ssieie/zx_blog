@@ -1,7 +1,7 @@
 <template>
   <div class="article-list" :class="{'ready':ready}">
     <div class="title">
-      <div>标题别特别特别特别{{ index }}</div>
+      <div>标题别特别特别特别{{ index }}-{{ content }}</div>
       <div class="line"></div>
       <div class="line-r"></div>
     </div>
@@ -37,20 +37,20 @@
 import {Options, Vue} from 'vue-class-component';
 import {getCurrentInstance} from 'vue';
 
+class Props {
+  content!: number;
+  index!: number;
+}
+
 @Options({
-  props: {
-    content: Number,
-    index: Number
-  },
   emits: ['articleItemIsReady'],
 })
-export default class ArticleList extends Vue {
-  public index!: number;
+
+export default class ArticleList extends Vue.with(Props) {
   public ready: boolean = false;
   public emitter = getCurrentInstance()?.appContext.config.globalProperties.emitter;
 
   created() {
-
   }
 
   isReady() {

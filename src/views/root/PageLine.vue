@@ -5,19 +5,20 @@
 </template>
 
 <script lang="ts">
-import {Options, Vue} from 'vue-class-component';
+import {Options, prop, Vue} from 'vue-class-component';
 import utils from '@/assets/utils/util';
 
+class Props {
+  height = prop<number>({default: document.body.scrollHeight});
+}
+
 @Options({
-  props: {
-    height: Number
-  },
   watch: {
     height: () => {
     }
   }
 })
-export default class PageLine extends Vue {
+export default class PageLine extends Vue.with(Props) {
   public lineWidth: number = 0;
   public lineWidthTotal: number = 0;
   public currentHeight: number = 0;
@@ -40,7 +41,7 @@ export default class PageLine extends Vue {
     });
 
     this.$watch('currentHeight', () => {
-      this.handlerScroll()
+      this.handlerScroll();
     });
   }
 

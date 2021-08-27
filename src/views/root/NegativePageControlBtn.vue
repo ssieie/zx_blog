@@ -15,13 +15,14 @@
 
 <script lang="ts">
 
-import {Vue, Options} from 'vue-class-component';
+import {Vue, Options, prop} from 'vue-class-component';
+
+class Props {
+  currentStatus!: boolean;
+  isShowTop = prop<boolean>({default: false});
+}
 
 @Options({
-  props: {
-    currentStatus: Boolean,
-    isShowTop: Boolean
-  },
   emits: ['clickMenuEmit'],
   watch: {
     currentStatus: () => {
@@ -29,7 +30,7 @@ import {Vue, Options} from 'vue-class-component';
   }
 })
 
-export default class NegativePageControlBtn extends Vue {
+export default class NegativePageControlBtn extends Vue.with(Props) {
   public negativePageControl: boolean = false;
   public pageTopHover: boolean = false;
   public topIcon: string = require('@/assets/images/to_up.png');
@@ -157,10 +158,11 @@ export default class NegativePageControlBtn extends Vue {
   .negative-page-control {
     display: none;
   }
-  .page-top-btn{
+  .page-top-btn {
     right: 30px;
     bottom: 100px;
-    .is-hover{
+
+    .is-hover {
       transform: translate(0, 0) scale(1);
     }
   }

@@ -41,7 +41,6 @@ export default class ContextWrapper extends Vue {
 
   updateLoadList() {
     console.log('页面更新啦~~');
-    console.log(document.body.scrollHeight);
     this.pageHeight = document.body.scrollHeight;
   }
 
