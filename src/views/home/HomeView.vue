@@ -23,24 +23,15 @@ export default class HomeView extends Vue {
   public currentPage: number = 1;
 
   created() {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 8; i++) {
       this.testList.push(i);
     }
   }
 
   pageChange(page: number) {
-    if (page === 0) {
-      if (this.currentPage > 1) {
-        this.currentPage--;
-      }
-    } else if (page === -1) {
-      if (this.currentPage < this.totalPage) {
-        this.currentPage++;
-      }
-    } else {
+    if (page !== this.currentPage) {
       this.currentPage = page;
     }
-    console.log(page);
   }
 
 }

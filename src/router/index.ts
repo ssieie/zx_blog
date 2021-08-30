@@ -23,6 +23,21 @@ const routes: RouteRecordRaw[] = [
         name: 'About',
         component: () => import(/* webpackChunkName: "about" */ '../views/AboutWeb/About.vue'),
       },
+      {
+        path: '/tags',
+        name: 'Tags',
+        component: () => import(/* webpackChunkName: "tags" */ '../views/tags/TagsView.vue'),
+      },
+      {
+        path: '/event',
+        name: 'Event',
+        component: () => import(/* webpackChunkName: "event" */ '../views/event/EventView.vue'),
+      },
+      {
+        path: '/other',
+        name: 'Other',
+        component: () => import(/* webpackChunkName: "other" */ '../views/other/OtherView.vue'),
+      },
     ],
   },
 ];

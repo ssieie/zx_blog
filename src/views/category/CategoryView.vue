@@ -1,12 +1,17 @@
 <template>
-  CategoryView
+  <h3 style="text-align: center;padding: 30px 0" v-for="test in 10">CategoryView</h3>
 </template>
 
 <script lang="ts">
 import {Vue} from 'vue-class-component';
+import {getCurrentInstance} from 'vue';
 
 export default class CategoryView extends Vue {
+  public emitter = getCurrentInstance()?.appContext.config.globalProperties.emitter;
 
+  mounted() {
+    this.emitter.emit('loadList');
+  }
 }
 </script>
 

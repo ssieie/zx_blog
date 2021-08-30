@@ -1,7 +1,9 @@
 <template>
   <div class="article-list" :class="{'ready':ready}">
     <div class="title">
-      <div>标题别特别特别特别{{ index }}-{{ content }}</div>
+      <div class="fl">
+        <span>测试测试测试{{ index }}-{{ content }}</span>
+      </div>
       <div class="line"></div>
       <div class="line-r"></div>
     </div>
@@ -16,11 +18,10 @@
       </div>
     </div>
     <div class="context">
-      时事通讯社称，共发现有约57万剂次莫德纳疫苗存在杂质，杂质呈颗粒状，肉眼可见，
-      且大小不一，这些疫苗为莫德纳公司一工厂生产的同一批次疫苗。厚生劳动省现已暂停使用
-      该工厂生产的约163万剂次疫苗。《日本经济新闻》称，涉事工厂位于西班牙。时事通讯社援引厚生劳动省的话称，
-      有一部分存在杂质的疫苗已经施打，目前还没有收到疫苗对接种者的健康造成伤害的报告，代理商
-      武田药品工业公司已向美国莫德纳公司提出要求，希望可以针对此事开展调查。
+      测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+      测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+      测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试
+      测试测试测试
     </div>
     <div class="read-all fl">
       <div class="fl">
@@ -56,14 +57,15 @@ export default class ArticleList extends Vue.with(Props) {
   isReady() {
     setTimeout(() => {
       this.ready = true;
-    }, (this.index + 1) * 250);
+    }, (this.index + 1) * 130);
   }
 
   mounted() {
+    this.isReady();
     setTimeout(() => {
       this.emitter.emit('loadList');
-    }, (this.index + 1) * 250);
-    this.isReady();
+      // 这里的延迟 为了让过渡执行完毕(230ms) 获得更准确的高度
+    }, this.index * 240);
   }
 }
 </script>
@@ -72,10 +74,11 @@ export default class ArticleList extends Vue.with(Props) {
 .article-list {
   width: 50%;
   margin: 10px auto 20px;
-  transition: all .25s;
+  transition: all .23s;
   opacity: 0;
 
   .title {
+    color: #333333;
     padding: 10px 0;
     font-size: 27px;
     position: relative;
@@ -86,8 +89,8 @@ export default class ArticleList extends Vue.with(Props) {
       bottom: 3px;
       transform: translate(0, -50%);
       height: 2px;
-      background-color: #646464;
-      transition: all .35s;
+      background-color: #000000;
+      transition: all .2s;
     }
 
     .line {
@@ -110,7 +113,7 @@ export default class ArticleList extends Vue.with(Props) {
   }
 
   .info-wrap {
-    color: #595959;
+    color: #333333;
     font-size: 14px;
     padding: 5px 0 10px 0;
 

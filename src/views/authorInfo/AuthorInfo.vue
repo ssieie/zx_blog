@@ -29,8 +29,8 @@ export default class AuthorInfo extends Vue {
         this.infoShow = value
         setTimeout(() => {
           this.markShow = value
-        }, 600)
-      }, 300)
+        }, 500)
+      }, 250)
     })
   }
 }
@@ -44,14 +44,14 @@ export default class AuthorInfo extends Vue {
   bottom: 0;
   left: 0;
   z-index: -9998;
-  transition: all .7s ease;
+  transition: all .5s ease-in-out;
 
   .info {
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
-    transition: width .7s ease;
+    transition: width .5s ease-in-out;
     background: #505050;
   }
 }

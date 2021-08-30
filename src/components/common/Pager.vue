@@ -92,8 +92,10 @@ export default class Pager extends Vue.with(Props) {
           this.simulationPager[4] = this.simulationPager[4] - 1;
           this.simulationPager[3] = this.simulationPager[3] - 1;
           this.simulationPager[2] = this.simulationPager[2] - 1;
-        }else {
-
+        } else if (pageNum === this.totalPage - 3 && pageNum < this.currentPage) {
+          this.simulationPager[4] = this.simulationPager[4] - 1;
+          this.simulationPager[3] = this.simulationPager[3] - 1;
+          this.simulationPager[2] = this.simulationPager[2] - 1;
         }
       }
     }
@@ -105,6 +107,11 @@ export default class Pager extends Vue.with(Props) {
         this.simulationPager[2] = 3;
         this.simulationPager[3] = 4;
       }
+    }
+    if (pageNum === this.totalPage) {
+      this.simulationPager[4] = this.totalPage - 1;
+      this.simulationPager[3] = this.totalPage - 2;
+      this.simulationPager[2] = this.totalPage - 3;
     }
 
     if (pageNum >= this.totalPage - 2) {
@@ -123,7 +130,9 @@ export default class Pager extends Vue.with(Props) {
       }
     }
 
-    this.$emit('pageChange', page);
+    if (pageNum !== 0 && pageNum <= this.totalPage) {
+      this.$emit('pageChange', pageNum);
+    }
   }
 }
 </script>
@@ -131,12 +140,12 @@ export default class Pager extends Vue.with(Props) {
 <style scoped lang="scss">
 .pager {
   width: 50%;
-  margin: 40px auto 0;
+  margin: 70px auto 0;
   border-top: 2px solid #f5f5f5;
 
   .block {
-    width: 40px;
-    height: 38px;
+    width: 35px;
+    height: 33px;
     background-color: #f5f5f5;
     cursor: pointer;
     transition: all .3s;

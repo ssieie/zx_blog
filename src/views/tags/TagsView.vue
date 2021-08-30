@@ -1,5 +1,5 @@
 <template>
-  <h3 style="text-align: center;padding: 30px 0" v-for="test in 10">About</h3>
+  <h3 style="text-align: center;padding: 30px 0" v-for="test in 10">Tags</h3>
 </template>
 
 <script lang="ts">

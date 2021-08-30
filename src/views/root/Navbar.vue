@@ -2,7 +2,7 @@
   <div>
     <div class="nav-bar-pc fl-c">
       <div class="nav-wrap fl-b">
-        <div class="logo fl-c">logo</div>
+        <div class="logo fl-c"></div>
         <div class="menu-list fl">
           <div class="menu-item fl-c" @click="toPage('index')">
             <i class="fa fa-home"></i>
@@ -12,19 +12,15 @@
             <i class="fa fa-book"></i>
             <span>归档</span>
           </div>
-          <div class="menu-item fl-c">
+          <div class="menu-item fl-c" @click="toPage('tags')">
             <i class="fa fa-tags"></i>
             <span>标签</span>
           </div>
-          <div class="menu-item fl-c">
-            <i class="fa fa-archive"></i>
-            <span>时间线</span>
+          <div class="menu-item fl-c" @click="toPage('event')">
+            <i class="fa fa-rocket"></i>
+            <span>事件</span>
           </div>
-          <div class="menu-item fl-c">
-            <i class="fa fa-hashtag"></i>
-            <span>JavaScript</span>
-          </div>
-          <div class="menu-item fl-c">
+          <div class="menu-item fl-c" @click="toPage('other')">
             <i class="fa fa-coffee"></i>
             <span>杂项</span>
           </div>
@@ -37,7 +33,7 @@
     </div>
     <div class="nav-bar-mobile" :style="{'height':mobileBarHeight}">
       <div class="nb-mobile-wrap fl-b" :class="{'nb-mobile-wrap-ac':mobileBarHeight!=='50px'}">
-        <div class="logo fl-c">logo</div>
+        <div class="logo fl-c"></div>
         <div class="menu fl" @click="clickMenu">
           <span :class="{'line-one-close':mobileBarHeight!=='50px'}"></span>
           <span :class="{'line-two-close':mobileBarHeight!=='50px'}"></span>
@@ -53,19 +49,15 @@
           <i class="fa fa-book"></i>
           <span>文章归档</span>
         </div>
-        <div class="menu-item">
+        <div class="menu-item" @click="toPage('tags')">
           <i class="fa fa-tags"></i>
           <span>标签</span>
         </div>
-        <div class="menu-item">
-          <i class="fa fa-archive"></i>
-          <span>时间线</span>
+        <div class="menu-item" @click="toPage('event')">
+          <i class="fa fa-rocket"></i>
+          <span>事件</span>
         </div>
-        <div class="menu-item">
-          <i class="fa fa-hashtag"></i>
-          <span>JavaScript</span>
-        </div>
-        <div class="menu-item">
+        <div class="menu-item" @click="toPage('other')">
           <i class="fa fa-coffee"></i>
           <span>杂项</span>
         </div>
@@ -86,7 +78,7 @@ export default class Navbar extends Vue {
   public mobileBarHeight: string = '50px';
 
   clickMenu() {
-    this.mobileBarHeight = this.mobileBarHeight === '50px' ? '270px' : '50px';
+    this.mobileBarHeight = this.mobileBarHeight === '50px' ? '240px' : '50px';
   }
 
   toPage(url: string) {
@@ -104,7 +96,7 @@ export default class Navbar extends Vue {
   margin-top: 4px;
 
   .nav-wrap {
-    width: 70%;
+    width: 55%;
 
     .logo {
       width: 70px;
@@ -123,7 +115,7 @@ export default class Navbar extends Vue {
       .menu-item {
         cursor: pointer;
         margin-left: 20px;
-        padding: 4px 6px;
+        padding: 7px 10px;
         border-radius: 4px;
         transition: background-color .35s;
 
@@ -232,16 +224,23 @@ export default class Navbar extends Vue {
   }
 }
 
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1420px) {
   .nav-bar-pc {
-
     .nav-wrap {
-      width: 85%;
+      width: 60%;
     }
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1170px) {
+  .nav-bar-pc {
+    .nav-wrap {
+      width: 70%;
+    }
+  }
+}
+
+@media screen and (max-width: 787px) {
   .nav-bar-pc {
     display: none;
   }

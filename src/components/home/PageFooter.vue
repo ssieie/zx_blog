@@ -33,7 +33,7 @@ export default class PageFooter extends Vue {
 
 <style scoped lang="scss">
 .footer {
-  margin-top: 50px;
+  margin-top: 40px;
   padding: 30px 0;
   background-color: #f5f5f5;
 
