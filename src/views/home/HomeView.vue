@@ -9,6 +9,7 @@
 import {Vue, Options} from 'vue-class-component';
 import ArticleList from '@/components/home/ArticleList.vue';
 import Pager from '@/components/common/Pager.vue';
+import {getHomeInfo} from '@/request/home/home';
 
 
 @Options({
@@ -23,6 +24,9 @@ export default class HomeView extends Vue {
   public currentPage: number = 1;
 
   created() {
+    getHomeInfo({name: 'zx', age: 18}).then(res => {
+      console.log(res);
+    });
     for (let i = 0; i < 8; i++) {
       this.testList.push(i);
     }
