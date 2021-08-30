@@ -64,8 +64,8 @@ export default class ArticleList extends Vue.with(Props) {
     this.isReady();
     setTimeout(() => {
       this.emitter.emit('loadList');
-      // 这里的延迟 为了让过渡执行完毕(230ms) 获得更准确的高度
-    }, this.index * 240);
+      // 这里的延迟 为了让过渡执行完毕(130ms) 获得更准确的高度
+    }, (this.index + 1) * 140);
   }
 }
 </script>

@@ -10,7 +10,7 @@
            @mouseleave="selectBlock=-1" @click="selPager(page)">{{ page }}
       </div>
       <div class="omit" v-else>
-        <p>. . .</p>
+        <p>...</p>
       </div>
     </div>
     <div class="block fl-c" :class="{'ac':pageDownSel}" @mouseenter="pageDownSel=true"
@@ -189,6 +189,23 @@ export default class Pager extends Vue.with(Props) {
 @media screen and (max-width: 787px) {
   .pager {
     width: 85%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .pager {
+
+    .block {
+      width: 25px;
+      height: 23px;
+      font-size: 13px;
+    }
+
+    .omit {
+      p {
+        margin: 0;
+      }
+    }
   }
 }
 </style>

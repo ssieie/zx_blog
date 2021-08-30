@@ -26,14 +26,14 @@ export default class EventView extends Vue {
   public currentPage: number = 1;
 
   created() {
-    for (let i = 0; i <= 10; i++) {
+    for (let i = 0; i <= 16; i++) {
       let vote = {id: -1, time: '', title: ''};
       if (i % 3 === 0) {
         vote.id = -1;
         vote.time = 2021 - i + '';
       } else {
         vote.id = i;
-        vote.time = `08 - 30 - ${i}`;
+        vote.time = `08-3${i}`;
       }
       vote.title = `第${i}个事件`;
 
@@ -54,8 +54,40 @@ export default class EventView extends Vue {
 <style scoped lang="scss">
 .container {
   width: 50%;
-  border-left: 4px solid #dedede;
   margin: 80px auto 0;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    bottom: 0;
+    width: 4px;
+    background-color: rgba(224, 218, 218, 0.66);
+    border-radius: 10px;
+  }
+
+  .title {
+    padding: 0 25px 28px;
+    font-size: 18px;
+    position: relative;
+
+    span {
+      color: #232323;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      background-color: #bbbbbb;
+      border-radius: 50%;
+    }
+  }
 }
 
 @media screen and (max-width: 1420px) {
